@@ -46,4 +46,8 @@ public class WiseSayingController {
             System.out.println("id= 뒤에 숫자를 입력하세요.");
         }
     }
+
+    public void actionModify(String cmd) {
+        System.out.println("2 / 홍길동 / 현재와 자신을 사랑하라.");
+    }
 }
