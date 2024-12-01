@@ -23,7 +23,12 @@ public class WiseSayingController {
                현재를 사랑하라.
                작자미상
                """.stripIndent().trim());
+<<<<<<< HEAD
         assertThat(output).contains("명언 : ")
                 .contains("작가 : ");
+=======
+        String[] split = output.toString().split("\n");
+        assertThat(split).hasSize(3);
+>>>>>>> 4cd754e903c5645e8f7cad89309ae128d607b808
     }
 }
