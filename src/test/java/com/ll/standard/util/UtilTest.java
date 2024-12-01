@@ -30,6 +30,6 @@ public class UtilTest {
         Util.file.set(filePath, "내용");
 
         // then
-        assertThat(Util.file.get(filePath)).isEqualTo("내용");
+        assertThat(Util.file.get(filePath, "")).isEqualTo("내용");
     }
 }
