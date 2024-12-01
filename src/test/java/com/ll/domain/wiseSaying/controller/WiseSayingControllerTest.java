@@ -101,4 +101,21 @@ public class WiseSayingControllerTest {
                """);
         assertThat(output).contains("id= 뒤에 숫자를 입력하세요.");
     }
+
+    @Test
+    @DisplayName("삭제 명령어를 잘못 입력시 예외 처리")
+    public void t8() {
+        String output = AppTest.run("""
+               등록
+               현재를 사랑하라.
+               작자미상
+               등록
+               과거에 집착하지 마라.
+               작자미상
+               목록
+               삭제?id=1
+               삭제?id=1
+               """);
+        assertThat(output).contains("1번 명언은 존재하지 않습니다.");
+    }
 }
