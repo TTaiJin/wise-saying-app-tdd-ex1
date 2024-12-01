@@ -23,4 +23,8 @@ public class WiseSayingRepository {
         wiseSayings.add(wiseSaying);
         return wiseSaying;
     }
+
+    public List<WiseSaying> findAll() {
+        return wiseSayings;
+    }
 }
