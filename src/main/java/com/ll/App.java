@@ -32,7 +32,7 @@ public class App {
             } else if (cmd.equals("목록")) {
                 wiseSayingController.actionList();
             } else if (cmd.startsWith("삭제?id=")) {
-                wiseSayingController.actionDelete();
+                wiseSayingController.actionDelete(cmd);
             }
         }
 

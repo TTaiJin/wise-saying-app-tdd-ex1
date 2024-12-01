@@ -34,7 +34,12 @@ public class WiseSayingController {
         }
     }
 
-    public void actionDelete() {
-        System.out.println("1번 명언이 삭제되었습니다.");
+    public void actionDelete(String cmd) {
+        int deleteId = Integer.parseInt(cmd.substring(6));
+        boolean removed = wiseSayingService.requireDelete(deleteId);
+        if (!removed) {
+            System.out.println(deleteId + "번 명언은 존재하지 않습니다.");
+        }
+        System.out.println(deleteId + "번 명언이 삭제되었습니다.");
     }
 }
