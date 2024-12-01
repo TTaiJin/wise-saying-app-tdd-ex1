@@ -28,7 +28,11 @@ public class UtilTest {
         Util.file.touch(filePath);
 
         // then
-        assertThat(Util.file.exists(filePath)).isTrue();
+        assertThat(
+                Util.file.exists(filePath)
+        ).isTrue();
+
+        Util.file.delete(filePath);
     }
 
     @Test
@@ -41,7 +45,11 @@ public class UtilTest {
         Util.file.set(filePath, "내용");
 
         // then
-        assertThat(Util.file.get(filePath, "")).isEqualTo("내용");
+        assertThat(
+                Util.file.get(filePath, "")
+        ).isEqualTo("내용");
+
+        Util.file.delete(filePath);
     }
 
     @Test
@@ -55,7 +63,9 @@ public class UtilTest {
         Util.file.delete(filePath);
 
         // then
-        assertThat(Util.file.notExists(filePath)).isTrue();
+        assertThat(
+                Util.file.notExists(filePath)
+        ).isTrue();
     }
 
     @Test
@@ -67,8 +77,11 @@ public class UtilTest {
         // when
         Util.file.touch(filePath);
 
-
         // then
-        assertThat(Util.file.notExists(filePath)).isTrue();
+        assertThat(
+                Util.file.exists(filePath)
+        ).isTrue();
+
+        Util.file.delete(filePath);
     }
 }
