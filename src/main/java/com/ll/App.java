@@ -25,7 +25,9 @@ public class App {
                 break;
             } else if ("등록".equals(cmd)) {
                 System.out.println("명언 : ");
+                String content = scanner.nextLine();
                 System.out.println("작가 : ");
+                String author = scanner.nextLine();
             }
         }
 
