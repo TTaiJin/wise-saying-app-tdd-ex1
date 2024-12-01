@@ -44,6 +44,6 @@ public class UtilTest {
         Util.file.delete(filePath);
 
         // then
-        assertThat(Util.file.nonExists(filePath)).isTrue();
+        assertThat(Util.file.notExists(filePath)).isTrue();
     }
 }
