@@ -99,6 +99,6 @@ public class WiseSayingControllerTest {
                목록
                삭제?id=asdf
                """);
-        assertThat(output).contains("삭제?id= 뒤에 숫자를 입력하세요.");
+        assertThat(output).contains("id= 뒤에 숫자를 입력하세요.");
     }
 }

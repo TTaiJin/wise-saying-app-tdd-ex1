@@ -35,11 +35,15 @@ public class WiseSayingController {
     }
 
     public void actionDelete(String cmd) {
-        int deleteId = Integer.parseInt(cmd.substring(6));
-        boolean removed = wiseSayingService.requireDelete(deleteId);
-        if (!removed) {
-            System.out.println(deleteId + "번 명언은 존재하지 않습니다.");
+        try {
+            int deleteId = Integer.parseInt(cmd.substring(6));
+            boolean removed = wiseSayingService.requireDelete(deleteId);
+            if (!removed) {
+                System.out.println(deleteId + "번 명언은 존재하지 않습니다.");
+            }
+            System.out.println(deleteId + "번 명언이 삭제되었습니다.");
+        } catch (NumberFormatException e) {
+            System.out.println("id= 뒤에 숫자를 입력하세요.");
         }
-        System.out.println(deleteId + "번 명언이 삭제되었습니다.");
     }
 }
