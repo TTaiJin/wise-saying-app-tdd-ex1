@@ -1,11 +1,22 @@
 package com.ll.standard.util;
 
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class UtilTest {
+    @BeforeAll
+    public static void beforeAll() {
+        Util.file.mkdir("temp");
+    }
+
+    @AfterAll
+    public static void afterAll() {
+        Util.file.rmdir("temp");
+    }
 
     @Test
     @DisplayName("파일을 생성할 수 있다.")
@@ -18,8 +29,6 @@ public class UtilTest {
 
         // then
         assertThat(Util.file.exists(filePath)).isTrue();
-
-        Util.file.delete(filePath);
     }
 
     @Test
@@ -33,8 +42,6 @@ public class UtilTest {
 
         // then
         assertThat(Util.file.get(filePath, "")).isEqualTo("내용");
-
-        Util.file.delete(filePath);
     }
 
     @Test
