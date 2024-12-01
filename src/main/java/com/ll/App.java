@@ -27,10 +27,12 @@ public class App {
             if ("종료".equals(cmd)) {
                 systemController.actionExit();
                 break;
-            } else if ("등록".equals(cmd)) {
+            } else if (cmd.equals("등록")) {
                 wiseSayingController.actionAdd();
-            } else if ("목록".equals(cmd)) {
+            } else if (cmd.equals("목록")) {
                 wiseSayingController.actionList();
+            } else if (cmd.startsWith("삭제?id=")) {
+                wiseSayingController.actionDelete();
             }
         }
 
