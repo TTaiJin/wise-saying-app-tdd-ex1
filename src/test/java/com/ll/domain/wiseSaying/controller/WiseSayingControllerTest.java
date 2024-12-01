@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class WiseSayingController {
+public class WiseSayingControllerTest {
     @Test
     @DisplayName("== 명언 앱 ==")
     public void t1() {
