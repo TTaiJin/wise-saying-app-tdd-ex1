@@ -6,7 +6,6 @@ import com.ll.standard.util.Util;
 import java.io.IOException;
 import java.nio.file.NoSuchFileException;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 public class WiseSayingFileRepository implements WiseSayingRepository {
@@ -29,8 +28,7 @@ public class WiseSayingFileRepository implements WiseSayingRepository {
             wiseSaying.setId(getLastId() + 1);
         }
 
-        Map<String, Object> wiseSayingMap = wiseSaying.toMap();
-        String jsonStr = Util.json.toString(wiseSayingMap);
+        String jsonStr = wiseSaying.toJsonStr();
 
         Util.file.set(getRowFilePath(wiseSaying.getId()), jsonStr);
 
@@ -45,7 +43,6 @@ public class WiseSayingFileRepository implements WiseSayingRepository {
         try {
             return Util.file.walkRegularFiles(getTableDirPath(), "\\d+\\.json")
                     .map(path -> Util.file.get(path.toString(), ""))
-                    .map(Util.json::toMap)
                     .map(WiseSaying::new)
                     .toList();
         } catch (NoSuchFileException e){
@@ -61,15 +58,12 @@ public class WiseSayingFileRepository implements WiseSayingRepository {
 
     public Optional<WiseSaying> findById(int id) {
         String filePath = getRowFilePath(id);
+        String jsonStr = Util.file.get(filePath, "");
 
         if (Util.file.notExists(filePath)) {
             return Optional.empty();
         }
-
-        String jsonStr = Util.file.get(filePath, "");
-        Map<String, Object> wiseSayingMap = Util.json.toMap(jsonStr);
-
-        return Optional.of(new WiseSaying(wiseSayingMap));
+        return Optional.of(new WiseSaying(jsonStr));
     }
 
     private void setLastId(int id) {
