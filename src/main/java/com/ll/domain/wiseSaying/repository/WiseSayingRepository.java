@@ -11,7 +11,7 @@ public interface WiseSayingRepository {
 
     List<WiseSaying> findAll();
 
-    boolean delete(int deleteId);
+    boolean deleteById(int deleteId);
 
     Optional<WiseSaying> findById(int modifyId);
 }

@@ -29,7 +29,7 @@ public class WiseSayingMemoryRepository implements WiseSayingRepository{
         return wiseSayings;
     }
 
-    public boolean delete(int deleteId) {
+    public boolean deleteById(int deleteId) {
         return wiseSayings.removeIf(wiseSaying -> wiseSaying.getId() == deleteId);
     }
 

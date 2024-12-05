@@ -24,7 +24,7 @@ public class WiseSayingService {
     }
 
     public boolean requireDelete(int deleteId) {
-        return wiseSayingRepository.delete(deleteId);
+        return wiseSayingRepository.deleteById(deleteId);
     }
 
     public Optional<WiseSaying> findById(int modifyId) {
