@@ -14,6 +14,14 @@ public class WiseSayingFileRepository implements WiseSayingRepository{
         this.lastId = 0;
     }
 
+    public static String getTableDirPath() {
+        return "db/test/wiseSaying";
+    }
+
+    public static String getRowFilePath(int id) {
+        return getTableDirPath() + "/" + id + ".json";
+    }
+
     public WiseSaying save(WiseSaying wiseSaying) {
         if (!wiseSaying.isNew()) {
             return wiseSaying;
@@ -23,7 +31,7 @@ public class WiseSayingFileRepository implements WiseSayingRepository{
 
         Map<String, Object> wiseSayingMap = wiseSaying.toMap();
         String jsonStr = Util.json.toString(wiseSayingMap);
-        Util.file.set("db/test/wiseSaying/1.json", jsonStr);
+        Util.file.set(getRowFilePath(wiseSaying.getId()), jsonStr);
         return wiseSaying;
     }
 
@@ -32,7 +40,7 @@ public class WiseSayingFileRepository implements WiseSayingRepository{
     }
 
     public boolean deleteById(int id) {
-        return Util.file.delete("db/test/wiseSaying/" + id + ".json");
+        return Util.file.delete(getRowFilePath(id));
     }
 
     public Optional<WiseSaying> findById(int modifyId) {
