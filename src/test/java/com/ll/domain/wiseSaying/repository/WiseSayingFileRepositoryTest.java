@@ -12,7 +12,7 @@ import java.util.Optional;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class WiseSayingFileRepositoryTest {
-    private final WiseSayingRepository wiseSayingRepository = new WiseSayingFileRepository();
+    private final WiseSayingFileRepository wiseSayingRepository = new WiseSayingFileRepository();
 
     @BeforeEach
     public void beforeEach() {
@@ -70,5 +70,16 @@ public class WiseSayingFileRepositoryTest {
 
         assertThat(wiseSayingRepository.findAll())
                 .containsExactlyInAnyOrder(wiseSaying1, wiseSaying2);
+    }
+
+    @Test
+    @DisplayName("lastId.txt 생성")
+    public void t5() {
+        WiseSaying wiseSaying = new WiseSaying(0, "꿈을 지녀라. 그러면 어려운 현실을 이길 수 있다.", "괴테");
+        wiseSayingRepository.save(wiseSaying);
+
+        int lastId = wiseSayingRepository.getLastId();
+
+        assertThat(lastId).isEqualTo(wiseSaying.getId());
     }
 }
