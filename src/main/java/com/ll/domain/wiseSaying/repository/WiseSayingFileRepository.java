@@ -31,8 +31,8 @@ public class WiseSayingFileRepository implements WiseSayingRepository{
         return wiseSayings;
     }
 
-    public boolean deleteById(int deleteId) {
-        return wiseSayings.removeIf(wiseSaying -> wiseSaying.getId() == deleteId);
+    public boolean deleteById(int id) {
+        return Util.file.delete("db/test/wiseSaying/" + id + ".json");
     }
 
     public Optional<WiseSaying> findById(int modifyId) {
