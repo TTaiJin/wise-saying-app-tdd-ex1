@@ -43,9 +43,16 @@ public class WiseSayingFileRepository implements WiseSayingRepository{
         return Util.file.delete(getRowFilePath(id));
     }
 
-    public Optional<WiseSaying> findById(int modifyId) {
-        return wiseSayings.stream()
-                .filter(wiseSaying -> wiseSaying.getId() == modifyId)
-                .findFirst();
+    public Optional<WiseSaying> findById(int id) {
+        String filePath = getRowFilePath(id);
+
+        if (Util.file.notExists(filePath)) {
+            return Optional.empty();
+        }
+
+        String jsonStr = Util.file.get(filePath, "");
+        Map<String, Object> wiseSayingMap = Util.json.toMap(jsonStr);
+
+        return Optional.of(new WiseSaying(wiseSayingMap));
     }
 }
